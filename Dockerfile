@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y apt-transport-https ca-certificates cur
 
 COPY --from=build /app/target/*.jar /app/app.jar
 
-EXPOSE 8080
+EXPOSE 8081
 
 ENTRYPOINT ["doppler", "run", "--"]
 CMD ["java", "-jar", "/app/app.jar"]
