@@ -1,3 +1,4 @@
+![Logo](https://github.com/Easy-Market-SPL/.github/blob/main/Banner.png?raw=true)
 
 # EasyMarket Users Service
 
