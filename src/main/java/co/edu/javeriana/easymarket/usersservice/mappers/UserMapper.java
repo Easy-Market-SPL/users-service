@@ -1,6 +1,5 @@
 package co.edu.javeriana.easymarket.usersservice.mappers;
 
-import co.edu.javeriana.easymarket.usersservice.dtos.CreateUserDTO;
 import co.edu.javeriana.easymarket.usersservice.dtos.UserDTO;
 import co.edu.javeriana.easymarket.usersservice.model.User;
 import org.modelmapper.ModelMapper;
@@ -22,9 +21,5 @@ public class UserMapper {
 
     public User userDTOToUser(UserDTO userDTO) {
         return modelMapper.map(userDTO, User.class);
-    }
-
-    public User createUserDTOToUser(CreateUserDTO createUserDTO) {
-        return modelMapper.map(createUserDTO, User.class);
     }
 }
