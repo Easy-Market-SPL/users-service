@@ -135,4 +135,14 @@ public class UserService {
         userRepository.delete(user);
     }
 
+    public String[] getAllAdminEmails() {
+        List<User> users = userRepository.findUsersByFilters(null, null, null, "admin", false);
+        String[] emails = new String[users.size()];
+
+        for (int i = 0; i < users.size(); i++) {
+            emails[i] = users.get(i).getEmail();
+        }
+
+        return emails;
+    }
 }
