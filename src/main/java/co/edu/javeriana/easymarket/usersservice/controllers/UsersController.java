@@ -1,11 +1,9 @@
 package co.edu.javeriana.easymarket.usersservice.controllers;
 
-import co.edu.javeriana.easymarket.usersservice.dtos.Response;
 import co.edu.javeriana.easymarket.usersservice.dtos.UserDTO;
 import co.edu.javeriana.easymarket.usersservice.mappers.UserMapper;
 import co.edu.javeriana.easymarket.usersservice.model.User;
 import co.edu.javeriana.easymarket.usersservice.services.UserService;
-import co.edu.javeriana.easymarket.usersservice.utils.OperationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,66 +33,46 @@ public class UsersController {
             @RequestParam(value = "rol", required = false) String rol,
             @RequestParam(value = "deleted", required = false, defaultValue = "false") boolean deleted
     ) {
-        List<UserDTO> users = userService.getUsers(fullname, username, email,rol, deleted).stream()
+        List<UserDTO> users = userService.getUsers(fullname, username, email, rol, deleted).stream()
                 .map(userMapper::userToUserDTO)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUser(@PathVariable String id) {
-        try {
-            User user = userService.getUser(id);
-            return ResponseEntity.ok(userMapper.userToUserDTO(user));
-        } catch (OperationException e) {
-            return ResponseEntity.status(e.getCode()).body(new Response(e.getCode(),e.getMessage()));
-        }
+    public ResponseEntity<UserDTO> getUser(@PathVariable String id) {
+        User user = userService.getUser(id);
+        return ResponseEntity.ok(userMapper.userToUserDTO(user));
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
-        try {
-            User user = userMapper.userDTOToUser(userDTO);
-            user = userService.createUser(user);
-            return ResponseEntity.ok(userMapper.userToUserDTO(user));
-        } catch (OperationException e) {
-            return ResponseEntity.status(e.getCode()).body(new Response(e.getCode(),e.getMessage()));
-        }
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        User user = userMapper.userDTOToUser(userDTO);
+        user = userService.createUser(user);
+        return ResponseEntity.ok(userMapper.userToUserDTO(user));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody UserDTO userDTO) {
-        try {
-            User user = userMapper.userDTOToUser(userDTO);
-            user = userService.updateUser(id, user);
-            return ResponseEntity.ok(userMapper.userToUserDTO(user));
-        } catch (OperationException e) {
-            return ResponseEntity.status(e.getCode()).body(new Response(e.getCode(),e.getMessage()));
-        }
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String id, @RequestBody UserDTO userDTO) {
+        User user = userMapper.userDTOToUser(userDTO);
+        user = userService.updateUser(id, user);
+        return ResponseEntity.ok(userMapper.userToUserDTO(user));
     }
 
     @PutMapping("/{id}/delete")
-    public ResponseEntity<?> deleteUser(@PathVariable String id) {
-        try {
-            User user = userService.deleteUser(id);
-            return ResponseEntity.ok(userMapper.userToUserDTO(user));
-        } catch (OperationException e) {
-            return ResponseEntity.status(e.getCode()).body(new Response(e.getCode(),e.getMessage()));
-        }
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable String id) {
+        User user = userService.deleteUser(id);
+        return ResponseEntity.ok(userMapper.userToUserDTO(user));
     }
 
     @PutMapping("/{id}/restore")
-    public ResponseEntity<?> restoreUser(@PathVariable String id) {
-        try {
-            User user = userService.restoreUser(id);
-            return ResponseEntity.ok(userMapper.userToUserDTO(user));
-        } catch (OperationException e) {
-            return ResponseEntity.status(e.getCode()).body(new Response(e.getCode(),e.getMessage()));
-        }
+    public ResponseEntity<UserDTO> restoreUser(@PathVariable String id) {
+        User user = userService.restoreUser(id);
+        return ResponseEntity.ok(userMapper.userToUserDTO(user));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserPermanently(@PathVariable String id) {
+    public ResponseEntity<Void> deleteUserPermanently(@PathVariable String id) {
         userService.deletePermanentlyUser(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

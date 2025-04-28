@@ -32,8 +32,6 @@ public class Address {
     @Column(name = "longitude", nullable = false, precision = 9, scale = 6)
     private BigDecimal longitude;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
+    @Column(name = "user_id", nullable = false, length = 36)
+    private String userId;
 }
