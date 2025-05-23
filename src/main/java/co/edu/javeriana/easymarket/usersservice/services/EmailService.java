@@ -2,7 +2,6 @@ package co.edu.javeriana.easymarket.usersservice.services;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -14,7 +13,6 @@ public class EmailService {
     private final JavaMailSender mailSender;
     private static final String LOGO_URL = "https://raw.githubusercontent.com/Easy-Market-SPL/.github/refs/heads/main/Banner.png"; // Logo similar al de la imagen
 
-    @Autowired
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }

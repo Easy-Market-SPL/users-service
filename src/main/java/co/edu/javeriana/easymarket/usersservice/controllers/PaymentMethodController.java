@@ -4,7 +4,6 @@ import co.edu.javeriana.easymarket.usersservice.dtos.PaymentMethodDTO;
 import co.edu.javeriana.easymarket.usersservice.mappers.PaymentMethodMapper;
 import co.edu.javeriana.easymarket.usersservice.model.PaymentMethod;
 import co.edu.javeriana.easymarket.usersservice.services.PaymentMethodService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,6 @@ public class PaymentMethodController {
     private final PaymentMethodService paymentMethodService;
     private final PaymentMethodMapper paymentMethodMapper;
 
-    @Autowired
     public PaymentMethodController(PaymentMethodService paymentMethodService, PaymentMethodMapper paymentMethodMapper) {
         this.paymentMethodService = paymentMethodService;
         this.paymentMethodMapper = paymentMethodMapper;

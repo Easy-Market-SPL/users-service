@@ -3,7 +3,6 @@ package co.edu.javeriana.easymarket.usersservice.services;
 import co.edu.javeriana.easymarket.usersservice.model.Address;
 import co.edu.javeriana.easymarket.usersservice.repository.AddressRepository;
 import co.edu.javeriana.easymarket.usersservice.utils.OperationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.List;
 public class AddressService {
     private final AddressRepository addressRepository;
 
-    @Autowired
     public AddressService(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }

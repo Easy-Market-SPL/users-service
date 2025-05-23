@@ -9,7 +9,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,6 @@ public class UserNotificationAspect {
     private final EmailService emailService;
     private final UserService userService;
 
-    @Autowired
     public UserNotificationAspect(EmailService emailService, UserService userService) {
         this.emailService = emailService;
         this.userService = userService;

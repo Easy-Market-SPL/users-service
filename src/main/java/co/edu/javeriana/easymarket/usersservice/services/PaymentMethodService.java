@@ -4,7 +4,6 @@ import co.edu.javeriana.easymarket.usersservice.model.PaymentMethod;
 import co.edu.javeriana.easymarket.usersservice.repository.PaymentMethodRepository;
 import co.edu.javeriana.easymarket.usersservice.repository.UserRepository;
 import co.edu.javeriana.easymarket.usersservice.utils.OperationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class PaymentMethodService {
     private final PaymentMethodRepository paymentMethodRepository;
     private final UserRepository userRepository;
 
-    @Autowired
     public PaymentMethodService(PaymentMethodRepository paymentMethodRepository, UserRepository userRepository) {
         this.paymentMethodRepository = paymentMethodRepository;
         this.userRepository = userRepository;

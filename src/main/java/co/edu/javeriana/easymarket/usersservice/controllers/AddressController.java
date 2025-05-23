@@ -4,7 +4,6 @@ import co.edu.javeriana.easymarket.usersservice.dtos.AddressDTO;
 import co.edu.javeriana.easymarket.usersservice.mappers.AddressMapper;
 import co.edu.javeriana.easymarket.usersservice.model.Address;
 import co.edu.javeriana.easymarket.usersservice.services.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ public class AddressController {
     private final AddressService addressService;
     private final AddressMapper addressMapper;
 
-    @Autowired
     public AddressController(AddressService addressService, AddressMapper addressMapper) {
         this.addressService = addressService;
         this.addressMapper = addressMapper;
